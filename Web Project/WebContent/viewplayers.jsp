@@ -15,19 +15,30 @@ List<Player> li=pd.getAllPlayers();
 %>
 <table>
 <tr>
-<th>Player Number</th>
+<th>Player Id</th>
 <th>Player Name</th>
-<th>Country</th>
+<th>dateOfbirth</th>
+<th>Nationality</th>
+<th>skills</th>
+<th>runs</th>
+<th>wickets</th>
+<th>Number of Matches</th>
+<th>team id</th>
 <th></th>
 </tr>
 <%
 for(Player p:li){
 %>
 <tr>
-<td><%=p.getPlayerId() %></td>
-<td><%=p.getPlayerName() %></td>
-<td><%=p.getCountry() %></td>
-<td><a href="editplayer.jsp?id=<%=p.getPlayerId()%>">Update</a></td>
+<td><%=p.getPlayer_id() %></td>
+<td><%=p.getName() %></td>
+<td><%=p.getDateOfBirth() %></td>
+<td><%=p.getNationality() %></td>
+<td><%=p.getSkills() %></td>
+<td><%=p.getRuns() %></td>
+<td><%=p.getWickets() %></td>
+<td><%=p.getNumber_of_matches() %></td>
+<td><a href="editplayer.jsp?id=<%=p.getPlayer_id()%>">Update</a></td>
 </tr>
 <%} %>
 </table>

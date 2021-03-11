@@ -2,12 +2,28 @@ package com.ltts.WebProject.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ltts.WebProject.configure.MyConnection;
 import com.ltts.WebProject.model.*;
 
 
 public class AuctionDao {
+	public List<Auction> getAllAuction() throws Exception{
+		List<Auction> li=new ArrayList<Auction>();
+		Connection mc=MyConnection.getConnection(); // TRanfers control to another 
+		Statement ps=mc.createStatement();
+		ResultSet rs=ps.executeQuery("select * from auction");
+		//Player p=new Player();
+		while(rs.next()) {
+			li.add(new Auction(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getInt(5)));
+			
+		}
+		return li;
+	}
 	public boolean insertAuction(Auction a) throws Exception
 	{
 		Connection c= MyConnection.getConnection();

@@ -13,11 +13,11 @@ import com.ltts.WebProject.model.Player;
 
 public class PlayerDao {
 	
-	/*public List<Player> getAllPlayers() throws Exception{
+	public List<Player> getAllPlayers() throws Exception{
 		List<Player> li=new ArrayList<Player>();
 		Connection mc=MyConnection.getConnection(); // TRanfers control to another 
 		Statement ps=mc.createStatement();
-		ResultSet rs=ps.executeQuery("select * from web_player");
+		ResultSet rs=ps.executeQuery("select * from player");
 		//Player p=new Player();
 		while(rs.next()) {
 			li.add(new Player(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
@@ -30,16 +30,23 @@ public class PlayerDao {
 		Player p=new Player();
 		List<Player> li=getAllPlayers();
 		for(Player p1:li) {
-			if(p1.getplayer_id() == player_id) {
-				p.setPlayerId(player_id);
-				p.setPlayerName(p1.getPlayerName());
-				p.setCountry(p1.getCountry());
+			if(p1.getPlayer_id() == id) {
+				
+				p.setPlayer_id(p1.getPlayer_id());
+				p.setName(p1.getName());
+				p.setDateOfBirth(p1.getDateOfBirth());
+				p.setNationality(p1.getNationality());
+				p.setSkills(p1.getSkills());
+				p.setRuns(p1.getRuns());
+				p.setWickets(p1.getWickets());
+				p.setNumber_of_matches(p1.getNumber_of_matches());
+				p.setTeam_id(p1.getTeam_id());
 			}
 		}
 		
 		return p;
 	}
-	*/
+	
 	public boolean insertPlayer(Player p) throws Exception
 	{
 		Connection c= MyConnection.getConnection();

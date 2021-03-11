@@ -1,0 +1,62 @@
+package com.ltts.WebProject.com;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ltts.WebProject.dao.PlayerDao;
+import com.ltts.WebProject.dao.UserDao;
+import com.ltts.WebProject.model.Player;
+import com.ltts.WebProject.model.User;
+
+/**
+ * Servlet implementation class UserRegistration
+ */
+@WebServlet("/UserRegistration")
+public class UserRegistration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserRegistration() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//doGet(request, response);
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		String username=request.getParameter("username");
+		
+		String password=request.getParameter("password");
+		User u = new User(name,email,username,password);
+		System.out.println("inserted.." +u);
+		UserDao pd = new UserDao();
+		boolean b=false;
+		try {
+			b=pd.insertUser(u); // Control TRanfers to Dao file
+			System.out.println("Successfully Inserted...");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
